@@ -11,6 +11,7 @@ public class GameManager<Game> {
     private final List<Game> games;
 
     public GameManager() {
+        GameManagerCore.getInstance().getGameManagers().add(this);
         this.games = new ArrayList<>();
     }
 
