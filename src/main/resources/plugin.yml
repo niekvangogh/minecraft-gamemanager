@@ -1,0 +1,6 @@
+name: GameManager
+version: ${project.version}
+main: com.nivyox.gamemanager.Core
+authors: [Nivyox]
+description: Gamemanager project for local Spigot game servers
+website: https://nivyox.com
