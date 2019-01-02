@@ -2,19 +2,13 @@ package com.nivyox.gamemanager.structure.events;
 
 import com.nivyox.gamemanager.structure.StandardGame;
 import lombok.Getter;
-import lombok.Setter;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class GamePlayerAddEvent extends Event implements Cancellable {
+public class GamePlayerAddEvent extends Event {
 
     private static final HandlerList handlers = new HandlerList();
-
-    @Getter
-    @Setter
-    private boolean cancelled;
 
     @Getter
     private StandardGame game;

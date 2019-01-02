@@ -26,30 +26,22 @@ public abstract class StandardGame {
     @Getter
     private GameTimer gameTimer;
 
-    public StandardGame() {
+    private StandardGame() {
         this(new GameSettings(), null);
-    }
-
-    public StandardGame(GameArena gameArena) {
-        this(new GameSettings(), gameArena);
     }
 
     public StandardGame(GameSettings customSettings, GameArena arena) {
         this.players = new ArrayList<>();
-        this.gameTimer = new GameTimer(this);
         this.gameSettings = customSettings;
         this.gameArena = arena;
         this.gameState = GameState.INACTIVE;
+        this.gameTimer = new GameTimer(this);
     }
 
-    public boolean addPlayer(Player player) {
+    public void addPlayer(Player player) {
         GamePlayerAddEvent event = new GamePlayerAddEvent(this, player);
         Bukkit.getPluginManager().callEvent(event);
-        if (event.isCancelled()) {
-            return false;
-        }
         this.players.add(player);
-        return true;
     }
 
     public void removePlayer(Player player) {

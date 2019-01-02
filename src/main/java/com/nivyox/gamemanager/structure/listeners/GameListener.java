@@ -10,8 +10,5 @@ public class GameListener implements Listener {
     @EventHandler
     public void onGamePlayerAddEvent(GamePlayerAddEvent event) {
         StandardGame game = event.getGame();
-        if (game.getGameSettings().getMaxPlayerCount() < game.getPlayers().size() + 1) {
-            event.setCancelled(true);
-        }
     }
 }
