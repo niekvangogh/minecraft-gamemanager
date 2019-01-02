@@ -1,8 +1,7 @@
 package com.nivyox.gamemanager.structure;
 
-import com.nivyox.gamemanager.structure.events.GamePlayerAddEvent;
-import com.nivyox.gamemanager.structure.events.GamePlayerRemovedEvent;
-import com.nivyox.gamemanager.structure.events.GameStateChangeEvent;
+import com.nivyox.gamemanager.structure.arenas.GameArena;
+import com.nivyox.gamemanager.structure.events.*;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -24,6 +23,9 @@ public abstract class StandardGame {
     @Getter
     private GameState gameState;
 
+    @Getter
+    private GameTimer gameTimer;
+
     public StandardGame() {
         this(new GameSettings(), null);
     }
@@ -34,6 +36,7 @@ public abstract class StandardGame {
 
     public StandardGame(GameSettings customSettings, GameArena arena) {
         this.players = new ArrayList<>();
+        this.gameTimer = new GameTimer(this);
         this.gameSettings = customSettings;
         this.gameArena = arena;
         this.gameState = GameState.INACTIVE;
@@ -59,6 +62,4 @@ public abstract class StandardGame {
         GameStateChangeEvent event = new GameStateChangeEvent(this, this.gameState, newGameState);
         Bukkit.getPluginManager().callEvent(event);
     }
-
-    
 }
