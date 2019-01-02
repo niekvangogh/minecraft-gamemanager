@@ -1,5 +1,6 @@
 package com.nivyox.gamemanager;
 
+import com.nivyox.gamemanager.structure.listeners.GameListener;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,6 +19,11 @@ public final class GameManagerCore extends JavaPlugin {
     @Override
     public void onEnable() {
         this.gameManagers = new ArrayList<>();
+        this.registerEvents();
+    }
+
+    private void registerEvents() {
+        this.getServer().getPluginManager().registerEvents(new GameListener(), this);
     }
 
     @Override
