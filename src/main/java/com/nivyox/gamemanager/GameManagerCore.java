@@ -11,7 +11,7 @@ public final class GameManagerCore extends JavaPlugin {
     @Getter
     private List<GameManager> gameManagers;
 
-    public static GameManagerCore getInstance() {
+    static GameManagerCore getInstance() {
         return getPlugin(GameManagerCore.class);
     }
 
